@@ -2,6 +2,12 @@
 #ifndef INCLUDE_TPQUEUE_H_
 #define INCLUDE_TPQUEUE_H_
 
+struct SYM {
+  char ch;
+  int prior;
+  SYM* next;
+};
+
 template<typename T, int size>
 class TPQueue {
  private:
@@ -14,12 +20,6 @@ class TPQueue {
       pop();
     }
   }
-};
-
-struct SYM {
-  char ch;
-  int prior;
-  SYM* next;
 };
 
 #endif  // INCLUDE_TPQUEUE_H_
