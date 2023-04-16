@@ -10,10 +10,11 @@ struct SYM {
 };
 template <class T, int size>
 class TPQueue {
-private:
+ private:
     SYM* head;
     SYM* tail;
-public:
+
+ public:
     TPQueue() : head(nullptr), tail(nullptr) {}
     ~TPQueue() {
         while (head)
@@ -21,16 +22,13 @@ public:
     }
     void push(SYM a) {
         SYM* temp = new SYM{ a.ch, a.prior, nullptr };
-
         if (!head) {
             head = temp;
             tail = temp;
-        }
-        else if (a.prior > head->prior) {
+        } else if (a.prior > head->prior) {
             temp->next = head;
             head = temp;
-        }
-        else {
+        } else {
             SYM* current = head;
             while (current->next && a.prior <= current->next->prior)
                 current = current->next;
@@ -40,7 +38,7 @@ public:
     }
     SYM pop() {
         SYM* temp = head;
-        head = head->next;        
+        head = head->next;
         return *temp;
     }
     bool isEmpty() const {
